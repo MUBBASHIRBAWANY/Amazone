@@ -1,0 +1,25 @@
+{
+  "name": "amazone",
+  "version": "1.0.0",
+  "main": "data.js",
+  "scripts": {
+    "start": "nodemon --watch backend --exec babel-node backend/sever.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.19.2",
+    "gitinit": "^1.0.1"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.24.5",
+    "@babel/core": "^7.24.5",
+    "@babel/node": "^7.23.9",
+    "@babel/preset-env": "^7.24.5",
+    "eslint": "^9.2.0",
+    "nodemon": "^3.1.0"
+  }
+}

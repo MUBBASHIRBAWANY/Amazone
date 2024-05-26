@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">>
+    <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+    <div class="grid-container">
+        <header>
+            <div class="brand">
+                <a href="/#/">JSamazone</a>
+            </div>
+            <div>
+                <a href="./cart.html">cart</a> 
+            </div>
+            </div>
+            <div>
+                <a href="/#/signin"></a>
+                <a href="/#/cart"></a>
+            </div>
+        </header>
+        <main id="main-container"> </main>
+        <footer>
+            ALL right reserved
+        </footer>
+    </div>
+    <script type="module" src="./app.js"></script>
+
+    <script>
+        const getVal = async (val) =>{
+            let Cityid = [];
+cont = JSON.parse(localStorage.getItem('cart')) ?? [];
+ cont.forEach(function (value,i  ){
+
+ Cityid.push(value.id);
+
+})  
+let found =  Cityid.find(element => element == val);
+console.log(found);
+if (found === undefined) {
+         const response = await fetch ("http://localhost:5000/api/product", {
+          headers: {
+            "Content-Type" : "application/json"
+          }
+        })
+        const P_item = JSON.parse(localStorage.getItem('cart')) ?? []   
+     
+        const products = await response.json(); 
+          const P_found = products.find((ele) => ele._id = val) 
+         const obj ={
+            id : P_found._id,
+            name : P_found.pname,
+            img : P_found.image,
+            qty : 1,
+            price : P_found.price,
+            brand : P_found.brand,
+            category : P_found.category
+         }
+         P_item.push(obj)
+     
+
+         window.localStorage.setItem("cart", JSON.stringify(P_item))
+        }
+        else{
+            alert("please enter qty manualy")
+    }
+    // save array into localstorage
+        }
+        
+    
+    
+   
+   </script>
+   
+     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+
+</body>
+</html>
