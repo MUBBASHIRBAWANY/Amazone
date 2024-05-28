@@ -18,6 +18,6 @@ app.get('/api/product/:id', (req, res)=>{
 
 })
 
-app.listen(5000, () => {
+app.listen(https://mubbashirbawany.github.io/, () => {
     console.log("server runing");
 })
